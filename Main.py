@@ -3,7 +3,10 @@ from tkinter import *
 from tkinter import ttk, Canvas
 import random
 import winsound
+import time
+import threading
 from BubbleSort import bubbleSort
+from QuickSort import quickSort
 
 window = tkinter.Tk()
 
@@ -38,14 +41,14 @@ def Visual(data, colour):
         canvas.create_rectangle(x0, y0, x1, y1, fill = colour[i])
     
     window.update_idletasks()
-  
+
 def RunAlgorithm():
     print("Running Algorithm")
     SelectedAlgorithm = AlgorithmMenu.get()
     if(SelectedAlgorithm == "Bubble Sort"):
         bubbleSort(data, Visual)
     elif(SelectedAlgorithm == "Quick Sort"):
-        print("Yes1")
+        quickSort(data, 0, len(data)-1, Visual)
     elif(SelectedAlgorithm == "Merge Sort"):
         print("Yes2")
     
@@ -53,12 +56,16 @@ def RunAlgorithm():
 
     
 def ResetColour(data, visual):
+    time.sleep(1)
     for i in range(len(data)):
-       winsound.Beep((1000 - data[i]*10 + 37), 25)
+       winsound.Beep((((i)*2) + i*10 + 100), 20)
        visual(data, ['#A79986' if x == i else '#803E2F' for x in range(len(data))])   
+    time.sleep(0.2)
+    winsound.Beep((3000), 50)
     visual(data, ['#A79986' for x in range(len(data))])
     
-
+def Close():
+    exit()
 
 #Gui Components
 AlgorithmLabel = Label(window, text= "Algorithm: ", font=("Comfortaa", 20, "bold"), bg = "#a79986", relief=GROOVE)
@@ -73,6 +80,9 @@ ShuffleItems.grid(row=1, column= 3)
 
 Run = Button(window, text="Run",width = 8, font=("Comfortaa", 15, "bold"), bg = "#a79986", relief=GROOVE, activebackground= "#803e2f", command= RunAlgorithm)
 Run.grid(row=1, column=4)
+
+Close = Button(window, text="Close",width = 8, font=("Comfortaa", 15, "bold"), bg = "#a79986", relief=GROOVE, activebackground= "#803e2f", command=Close)
+Close.grid(row=1, column=970)
 
 canvas = Canvas(window, width=1190, height= 665, bg="#1f1d20", highlightbackground="Black") #canvas had to be on top cause it wanted to cause mega issues
 canvas.grid(row=2, column=0, columnspan= 1000)
