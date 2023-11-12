@@ -7,6 +7,7 @@ import time
 import threading
 from BubbleSort import bubbleSort
 from QuickSort import quickSort
+from MergeSort import mergeSort
 
 window = tkinter.Tk()
 
@@ -50,7 +51,7 @@ def RunAlgorithm():
     elif(SelectedAlgorithm == "Quick Sort"):
         quickSort(data, 0, len(data)-1, Visual)
     elif(SelectedAlgorithm == "Merge Sort"):
-        print("Yes2")
+        mergeSort(data, 0, len(data) - 1, Visual)
     
     ResetColour(data, Visual)
 
