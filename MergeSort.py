@@ -1,5 +1,6 @@
 import winsound
 
+#Merge Sort implementation
 def mergeSort(data, left, right, visual):
 
     if left < right:

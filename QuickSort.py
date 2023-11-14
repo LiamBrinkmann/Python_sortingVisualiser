@@ -1,12 +1,14 @@
 import winsound
 import time
 
+#splits the data up to then sort it
 def partition(data, head, tail, visual):
     border = head
     pivot = data[tail]
 
     visual(data, Colour(len(data), head, tail, border, border))
 
+    #sorting happens here
     for i in range(head, tail):
         if data[i] < pivot:
             visual(data, Colour(len(data), head, tail, border, i, True))
@@ -21,7 +23,7 @@ def partition(data, head, tail, visual):
 
     return border
 
-
+#keeps running the sorting method until it sees head is not below the tail
 def quickSort(data, head, tail, visual):
     if head < tail:
         part = partition(data, head, tail, visual)
@@ -30,6 +32,7 @@ def quickSort(data, head, tail, visual):
         quickSort(data, part+1, tail, visual)
 
 
+#Adds the colours to the bars, so it helps see whats happening a bit better
 def Colour(dataLen, head, tail, border, Curr, isSwapping=False):
     ColourArray = []
 

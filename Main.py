@@ -27,9 +27,10 @@ def Shuffle(): #shuffles the items
     random.shuffle(data)
     Visual(data, ["#A79986" for x in range(len(data))])
 
-def Visual(data, colour): 
-    canvas.delete("all")
+def Visual(data, colour):  #Takes the data array and adds rectangles to the canvas to display it
+    canvas.delete("all") #removes old rectangles
 
+    #Usable size
     Canvas_width = 1190
     Canvas_height = 665
     

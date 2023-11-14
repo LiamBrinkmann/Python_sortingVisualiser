@@ -1,6 +1,7 @@
 import winsound
 import time
 
+#bubblesort, checks if item is larger then moves it as necessary.
 def bubbleSort(data, visual):
     for i in range(len(data)):
         winsound.Beep((((i)*2) + i*10 + 100), 10)
